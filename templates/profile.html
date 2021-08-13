@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="container">
+    <h1>Halo <b>{{session.get('nama_online_user',None)}}</b> </h1>
+
+    <br>
+  </div>
+  <div class="container">
+    <a class="btn btn-primary" href="{{url_for('tambah_buku')}}" role="button">Tambah Buku +</a>
+    <br>
+  </div>
+
+
+
+  <!-- <div class="container">
+    <a class="btn btn-primary" href="{{url_for('tambah_buku')}}" role="button">Tambah Buku +</a>
+  </div> -->
+  <h2>Bukuku</h2>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>JUDUL</th>
+    <th>PENULIS</th>
+    <th>PENERBIT</th>
+    <th>TAHUN TERBIT</th>
+    <th>PEMILIK</th>
+    <th>PEMINJAM</th>
+    <th>ACTION</th>
+  </tr>
+  {% for x in bukuku %}
+  <tr>
+    <td>{{x.id}}</td>
+    <td>{{x.judul_buku}}</td>
+    <td>{{x.penulis}}</td>
+    <td>{{x.penerbit}}</td>
+    <td>{{x.tahun}}</td>
+    <td>{{x.pemilik.nama}}</td>
+    <td>{{x.peminjam.nama}}</td>
+    <td><a class="btn btn-warning" href="/hapus/{{x.id}}" role="button">Hapus</a> </td>
+  </tr>
+  {% endfor %}
+</table>
+
+  <h2>Buku Ku Pinjam</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>JUDUL</th>
+      <th>PENULIS</th>
+      <th>PENERBIT</th>
+      <th>TAHUN TERBIT</th>
+      <th>PEMILIK</th>
+      <th>PEMINJAM</th>
+      <th>ACTION</th>
+    </tr>
+    {% for x in bukukupinjam %}
+    <tr>
+      <td>{{x.id}}</td>
+      <td>{{x.judul_buku}}</td>
+      <td>{{x.penulis}}</td>
+      <td>{{x.penerbit}}</td>
+      <td>{{x.tahun}}</td>
+      <td>{{x.pemilik.nama}}</td>
+      <td>{{x.peminjam.nama}}</td>
+      <td><a class="btn btn-warning" href="/kembali/{{x.id}}" role="button">Kembalikan</a> </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

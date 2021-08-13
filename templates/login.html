@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+<div class="container">
+  {{msg}}
+  <form method="POST">
+    {{form.hidden_tag()}}
+
+    {{wtf.form_field(form.email)}}<br>
+    {{wtf.form_field(form.pwd)}}<br>
+    {{form.submit()}}
+
+  </form>
+  <p>Belum punya akun? <a href="{{url_for('daftar')}}"> Daftar di sini</a></p>
+
+
+</div>
+{% endblock %}

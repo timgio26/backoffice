@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<div class="container">
+  <form method="POST">
+    {{form.hidden_tag()}}
+    {{wtf.form_field(form.nama)}}<br>
+    {{wtf.form_field(form.email)}}<br>
+    {{wtf.form_field(form.pwd)}}<br>
+    {{form.submit()}}
+
+  </form>
+
+</div>
+{% endblock %}
